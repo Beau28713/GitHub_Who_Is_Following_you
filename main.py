@@ -41,7 +41,7 @@ def main(username: str, tag: str):
 
 
 if __name__ == "__main__":
-    main("beau28713", "following")
+    main("beau28713", "followers")
     print("Reading the json files...")
     print("Checking who is not following you back...")
     read_json.main()
