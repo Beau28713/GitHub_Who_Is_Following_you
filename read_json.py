@@ -18,7 +18,7 @@ def main():
     following = read_following()
     following_list = [person["login"] for person in following]
     followers_list = [person["login"] for person in followers]
-    
+
     for person in following_list:
         if person not in followers_list:
             print(f"{person} is not following you back!")
