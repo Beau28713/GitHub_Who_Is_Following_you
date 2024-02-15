@@ -1,17 +1,26 @@
-## About 
-Using Githubs API "https://api.github.com/users/{username}/{tag}" program will load users followers  
-and who the user is following. It then returns who is not following the user back. 
+## About
+
+Using Githubs API "https://api.github.com/users/{username}/{tag}" program will load users followers
+and who the user is following. It then returns who is not following the user back.
 
 ## Example
-```
-(base) C:\Users\clark\Documents\code\python\GitHub_Who_Is_Following_you>python -m main
-followers has been written to the file
-Reading the json files...
-Checking who is not following you back...
-PyBites-Open-Source is not following you back!
-```
 
-## Future plans
-Will make this into an CLI package for easier use.
-Allowing user to enter command and options at CLI so the code wont have to be
-Changed. Right now the user inputs has to be physically changed in the code (Not Good). 
+```
+(pybites) C:\Users\clark\Documents\code\python\GitHub_Who_Is_Following_you>python main.py --username Beau28713 --tag followers
+followers has been written to the file
+--------------------------------------------------------------------------------------------------------------------------------------
+(pybites) C:\Users\clark\Documents\code\python\GitHub_Who_Is_Following_you>python main.py --username Beau28713 --tag following
+following has been written to the file
+--------------------------------------------------------------------------------------------------------------------------------------
+(pybites) C:\Users\clark\Documents\code\python\GitHub_Who_Is_Following_you>python main.py --username Beau28713 --tag not_following_me
+PyBites-Open-Source is not following you back!
+peter-kimanzi is not following you back!
+tulna07 is not following you back!
+----------------------------------------------------------------------------------------------------------------------------------------
+(pybites) C:\Users\clark\Documents\code\python\GitHub_Who_Is_Following_you>python main.py --username Beau28713 --tag following_me
+roblight is following you, but you are not following them back!
+mbahomaid is following you, but you are not following them back!
+rajuranjan00 is following you, but you are not following them back!
+--------------------------------------------------------------------------------------------------------------------------------------
+(pybites) C:\Users\clark\Documents\code\python\GitHub_Who_Is_Following_you>
+```

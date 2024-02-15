@@ -1,28 +1,55 @@
 import json
+import requests
+
+def scrape_webpage(username: str, tag: str):
+    url = f"https://api.github.com/users/{username}/{tag}"
+    response = requests.get(url)
+    if response.status_code == 200:
+        json_data = response.json()
+        return json_data
+    else:
+        return "No data found"
+
+
+def get_followers(username: str, tag: str):
+    data = scrape_webpage(username, tag)
+    with open("followers.json", "w") as file:
+        json.dump(data, file, indent=2)
+
+
+def get_following(username: str, tag: str):
+    data = scrape_webpage(username, tag)
+    with open("following.json", "w") as file:
+        json.dump(data, file, indent=2)
 
 
 def read_followers():
     with open("followers.json", "r") as file:
         data = json.load(file)
-    return data
+        followers_list = [person["login"] for person in data]
+    return followers_list
 
 
 def read_following():
     with open("following.json", "r") as file:
         data = json.load(file)
-    return data
+        following_list = [person["login"] for person in data]
+    return following_list
 
 
-def main():
+def not_following_me():
     followers = read_followers()
     following = read_following()
-    following_list = [person["login"] for person in following]
-    followers_list = [person["login"] for person in followers]
 
-    for person in following_list:
-        if person not in followers_list:
+    for person in following:
+        if person not in followers:
             print(f"{person} is not following you back!")
 
 
-if __name__ == "__main__":
-    main()
+def following_me():
+    followers = read_followers()
+    following = read_following()
+
+    for person in followers:
+        if person not in following:
+            print(f"{person} is following you, but you are not following them back!")

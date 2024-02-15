@@ -1,47 +1,25 @@
-import requests
-import json
+import typer
 import read_json
 
 
-def scrape_webpage(url):
-    response = requests.get(url)
-    if response.status_code == 200:
-        json_data = response.json()
-        return json_data
-    else:
-        return "No data found"
+def main(username: str = "" , tag: str = ""):
+    if tag == "followers":
+        read_json.get_followers(username, tag)
+        print("followers has been written to the file")
 
+    elif tag == "following":
+        read_json.get_following(username, tag)
+        print("following has been written to the file")
 
-def get_followers(data: json):
-    with open("followers.json", "w") as file:
-        json.dump(data, file, indent=2)
+    elif tag == "not_following_me":
+        read_json.not_following_me()
 
-
-def get_following(data: json):
-    with open("following.json", "w") as file:
-        json.dump(data, file, indent=2)
-
-
-def main(username: str, tag: str):
-    url = f"https://api.github.com/users/{username}/{tag}"
-    data = scrape_webpage(url)
-
-    if data:
-        if tag == "followers":
-            print("followers has been written to the file")
-            get_followers(data)
-        elif tag == "following":
-            print("following has been written to the file")
-            get_following(data)
-        else:
-            print("Invalid tag")
+    elif tag == "following_me":
+        read_json.following_me()
 
     else:
-        print("Failed to fetch data from the URL")
+        print("Invalid tag")
 
 
 if __name__ == "__main__":
-    main("beau28713", "followers")
-    print("Reading the json files...")
-    print("Checking who is not following you back...")
-    read_json.main()
+    typer.run(main)
