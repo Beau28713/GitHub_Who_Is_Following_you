@@ -20,7 +20,7 @@ def scrape_webpage(username: str, tag: str)-> list:
         return []
 
 
-def read_json_files():
+def read_json_files() -> list:
     with open("followers.json", "r") as file:
         data = json.load(file)
         followers_list = [person["login"] for person in data]
