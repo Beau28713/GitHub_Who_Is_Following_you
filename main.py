@@ -6,21 +6,19 @@ from rich import print
 def main(username: str = "", tag: str = ""):
 
     tag_dic = {
-        "followers": read_json.get_followers,
-        "following": read_json.get_following,
-        "not_following_me": read_json.not_following_me,
-        "following_me": read_json.following_me,
+        "getdata": read_json.scrape_webpage,
+        "notfollowingme": read_json.not_following_me,
+        "followingme": read_json.following_me,
     }
-    try:
-        (
-            tag_dic.get(tag)(username, tag)
-            if tag == "followers" or tag == "following"
-            else tag_dic.get(tag)()
+
+    option = tag_dic.get(tag)
+
+    if option is None:
+        raise ValueError(
+            f"Invalid tag, {tag} not in the list of tags. Please use' 'getdata', 'notfollowingme', or 'followingme' as tags."
         )
-    except BaseException as e:
-        print(
-            "[bold red]invalid tag, tag not in the list of tags. Please use 'followers', 'following', 'not_following_me', or 'following_me' as tags.[/bold red]"
-        )
+
+    (tag_dic.get(tag)(username, tag) if tag == "getdata" else tag_dic.get(tag)())
 
 
 if __name__ == "__main__":
