@@ -2,20 +2,25 @@ import json
 import requests
 from rich import print
 
-def scrape_webpage(username: str, tag: str)-> list:
+
+def scrape_webpage(username: str, tag: str) -> list:
     followers_url = f"https://api.github.com/users/{username}/followers"
     following_url = f"https://api.github.com/users/{username}/following"
     followers_response = requests.get(followers_url)
     following_response = requests.get(following_url)
-    
+
     if following_response.status_code == 200 and followers_response.status_code == 200:
         following_data = following_response.json()
         followers_data = followers_response.json()
-        
-        with open("followers.json", "w") as followers_file, open("following.json", "w") as following_file:
+
+        with open("followers.json", "w") as followers_file, open(
+            "following.json", "w"
+        ) as following_file:
             json.dump(followers_data, followers_file, indent=2)
             json.dump(following_data, following_file, indent=2)
-        print("[bold green]Data has been successfully scraped and saved to followers.json and following.json[/bold green]")
+        print(
+            "[bold green]Data has been successfully scraped and saved to followers.json and following.json[/bold green]"
+        )
     else:
         return []
 
@@ -24,7 +29,7 @@ def read_json_files() -> list:
     with open("followers.json", "r") as file:
         data = json.load(file)
         followers_list = [person["login"] for person in data]
-    
+
     with open("following.json", "r") as file:
         data = json.load(file)
         following_list = [person["login"] for person in data]
@@ -45,4 +50,6 @@ def following_me():
 
     for person in followers:
         if person not in following:
-            print(f"[bold yellow]{person} is following you, but you are not following them back![/bold yellow]")
+            print(
+                f"[bold yellow]{person} is following you, but you are not following them back![/bold yellow]"
+            )
