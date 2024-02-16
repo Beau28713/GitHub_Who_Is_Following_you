@@ -9,16 +9,18 @@ def main(username: str = "", tag: str = ""):
         "following": read_json.get_following,
         "not_following_me": read_json.not_following_me,
         "following_me": read_json.following_me,
-        
     }
-    try: 
+    try:
         (
-            tag_dic.get(tag, "invalid tag")(username, tag)
+            tag_dic.get(tag)(username, tag)
             if tag == "followers" or tag == "following"
-            else tag_dic.get(tag, "invalid tag")()
+            else tag_dic.get(tag)()
         )
     except BaseException as e:
-        print("invalid tag, tag not in the list of tags. Please use 'followers', 'following', 'not_following_me', or 'following_me' as tags.")
+        print(
+            "invalid tag, tag not in the list of tags. Please use 'followers', 'following', 'not_following_me', or 'following_me' as tags."
+        )
+
 
 if __name__ == "__main__":
     typer.run(main)
