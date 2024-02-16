@@ -1,5 +1,6 @@
 import json
 import requests
+from rich import print
 
 def scrape_webpage(username: str, tag: str):
     url = f"https://api.github.com/users/{username}/{tag}"
@@ -43,7 +44,7 @@ def not_following_me():
 
     for person in following:
         if person not in followers:
-            print(f"{person} is not following you back!")
+            print(f"[bold yellow]{person} is not following you back![/bold yellow]")
 
 
 def following_me():
@@ -52,4 +53,4 @@ def following_me():
 
     for person in followers:
         if person not in following:
-            print(f"{person} is following you, but you are not following them back!")
+            print(f"[bold yellow]{person} is following you, but you are not following them back![/bold yellow]")

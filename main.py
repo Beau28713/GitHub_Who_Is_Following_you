@@ -1,5 +1,6 @@
 import typer
 import read_json
+from rich import print
 
 
 def main(username: str = "", tag: str = ""):
@@ -18,7 +19,7 @@ def main(username: str = "", tag: str = ""):
         )
     except BaseException as e:
         print(
-            "invalid tag, tag not in the list of tags. Please use 'followers', 'following', 'not_following_me', or 'following_me' as tags."
+            "[bold red]invalid tag, tag not in the list of tags. Please use 'followers', 'following', 'not_following_me', or 'following_me' as tags.[/bold red]"
         )
 
 
