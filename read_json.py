@@ -15,7 +15,7 @@ def scrape_webpage(username: str, tag: str)-> list:
         with open("followers.json", "w") as followers_file, open("following.json", "w") as following_file:
             json.dump(followers_data, followers_file, indent=2)
             json.dump(following_data, following_file, indent=2)
-        
+        print("[bold green]Data has been successfully scraped and saved to followers.json and following.json[/bold green]")
     else:
         return []
 
