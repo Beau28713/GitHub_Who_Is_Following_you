@@ -1,9 +1,18 @@
 import typer
 import read_json
-from rich import print
+from typing import Annotated
 
 
-def main(username: str = "", tag: str = ""):
+def main(
+    username: Annotated[str, typer.Option(help="User ID to look up.")] = "",
+    tag: Annotated[
+        str, typer.Option(help="Options to be used: notfollowingme or followingme.")
+    ] = "",
+):
+
+    typer.Option(
+        help="The username of the GITHUB user to scrape data from.", show_default=True
+    )
 
     tag_dic = {
         "getdata": read_json.scrape_webpage,
