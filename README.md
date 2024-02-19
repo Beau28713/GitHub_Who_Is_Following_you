@@ -1,7 +1,13 @@
 ## About
 
-Using Githubs API "https://api.github.com/users/{username}/{tag}" program will load users followers
-and who the user is following. It then returns who is not following the user back.
+Using Githubs API "https://api.github.com/users/{username}/{tag}" program loads users followers
+and following, saving them in json files. User can choose to see whos following them or who they are following. 
+
+--username [username] --tag notfollowingme  
+will return who you are following but are not following you back 
+
+--username [username] --tag followingme  
+will return who is following you but you are not following back  
 
 ## Example
 
