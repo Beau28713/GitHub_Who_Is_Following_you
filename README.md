@@ -9,6 +9,9 @@ will return who you are following but are not following you back
 --username [username] --tag followingme  
 will return who is following you but you are not following back  
 
+--username [username] --tag getdata  
+will go out and retrieve users followers and following via GITHUB API and save to json file for parsing
+
 ## Example
 
 ```
