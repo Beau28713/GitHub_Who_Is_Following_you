@@ -4,6 +4,15 @@ from rich import print
 
 
 def scrape_webpage(username: str, tag: str) -> list:
+    """This function scrapes the data from the github api and saves it to a json file.
+
+    Args:
+        username (str): user name to seaarch for
+        tag (str): tag to be used
+
+    Returns:
+        list: json list of followers and following
+    """
     followers_url = f"https://api.github.com/users/{username}/followers"
     following_url = f"https://api.github.com/users/{username}/following"
     followers_response = requests.get(followers_url)
@@ -26,6 +35,11 @@ def scrape_webpage(username: str, tag: str) -> list:
 
 
 def read_json_files() -> list:
+    """This function reads the json files and returns the data in a list format.
+
+    Returns:
+        list: followers_list, following_list
+    """
     with open("followers.json", "r") as file:
         data = json.load(file)
         followers_list = [person["login"] for person in data]
@@ -38,6 +52,8 @@ def read_json_files() -> list:
 
 
 def not_following_me():
+    """This function checks if the people you are following are not following you back.
+    """
     followers, following = read_json_files()
 
     for person in following:
@@ -46,6 +62,8 @@ def not_following_me():
 
 
 def following_me():
+    """This function checks if the people following you are not being followed back by you.
+    """
     followers, following = read_json_files()
 
     for person in followers:
