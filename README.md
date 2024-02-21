@@ -14,14 +14,4 @@ will go out and retrieve users followers and following via GITHUB API and save t
 
 ## Example
 
-```
-(base) C:\Users\clark\Documents\code\python\GitHub_Who_Is_Following_you>python main.py --username beau28713 --tag notfollowingme
-PyBites-Open-Source is not following you back!
-JohnMwendwa is not following you back!
-
-(base) C:\Users\clark\Documents\code\python\GitHub_Who_Is_Following_you>python main.py --username beau28713 --tag followingme
-roblight is following you, but you are not following them back!
-mbahomaid is following you, but you are not following them back!
-
-(base) C:\Users\clark\Documents\code\python\GitHub_Who_Is_Following_you>python main.py --username beau28713 --tag getdata
-```
+![Screenshot 2024-02-19 164528](https://github.com/Beau28713/GitHub_Who_Is_Following_you/assets/65408911/6b213a05-84ca-486a-b549-1d6fef110180)
