@@ -1,16 +1,19 @@
 ## About
 
-Using Githubs API "https://api.github.com/users/{username}/{tag}" program loads users followers
-and following, saving them in json files. User can choose to see whos following them or who they are following. 
+Utilizing GitHub's API at "https://api.github.com/users/{username}/{tag}", the program retrieves a user's followers and those they are following, storing this data in JSON files. Users have the option to view who is following them or whom they are following.
 
---username [username] --tag notfollowingme  
-will return who you are following but are not following you back 
-
---username [username] --tag followingme  
-will return who is following you but you are not following back  
-
---username [username] --tag getdata  
-will go out and retrieve users followers and following via GITHUB API and save to json file for parsing
+To check who you are following but are not followed back:
+```shell
+--username [username] --tag notfollowingme
+```
+To identify who is following you but you are not following back:
+```shell
+--username [username] --tag followingme
+``` 
+To fetch and save the user's followers and those they are following via the GitHub API:
+```shell
+--username [username] --tag getdata
+```
 
 ## Example
 
